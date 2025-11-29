@@ -7,6 +7,7 @@ Node.js + TypeScript SDK to interact with ARCA (formerly AFIP) web services. It 
 ## Features
 - WSAA-style authentication with X.509 certificates (PKCS#7/CMS signing).
 - Electronic invoicing (WSFE) helpers to check status, fetch last voucher, create and query invoices.
+- Taxpayer lookup (Padrón) to obtener datos básicos de contribuyentes por CUIT.
 - Strong TypeScript typings, clear error classes, and pluggable hooks.
 - ESM + CJS builds, Node.js 18+.
 
@@ -21,7 +22,7 @@ import { ArcaClient } from '@nicoo01x/arca-sdk';
 
 const client = new ArcaClient({
   cuit: '20-12345678-3',
-  serviceScopes: ['wsfe'],
+  serviceScopes: ['wsfe', 'padron'],
   cert: process.env.ARCA_CERT_PEM!,   // or certPath: '/path/cert.pem'
   key: process.env.ARCA_KEY_PEM!,     // or keyPath: '/path/key.pem'
   passphrase: process.env.ARCA_KEY_PASSPHRASE,
@@ -72,6 +73,10 @@ const invoiceRequest = {
 
 const result = await client.invoice?.createInvoice(invoiceRequest);
 console.log(result.cae, result.voucherNumber);
+
+// Taxpayer lookup
+const taxpayer = await client.taxpayer?.getByCuit('30712345678');
+console.log(taxpayer?.name, taxpayer?.ivaCondition);
 ```
 
 ## Configuration

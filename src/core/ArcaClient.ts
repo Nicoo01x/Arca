@@ -2,6 +2,7 @@ import { resolveEnvironment, EnvironmentName, ServiceUrls } from '../config/env'
 import { ArcaAuthClient, AuthHooks } from '../auth/ArcaAuthClient';
 import type { CertificateCredentials } from '../auth/types';
 import { ElectronicInvoiceClient } from '../services/wsfe/ElectronicInvoiceClient';
+import { TaxpayerClient } from '../services/taxpayer/TaxpayerClient';
 import { ValidationError } from '../errors/ValidationError';
 
 export interface HttpConfig {
@@ -22,6 +23,7 @@ export interface ArcaClientConfig extends CertificateCredentials {
 export class ArcaClient {
   public readonly auth: ArcaAuthClient;
   public readonly invoice?: ElectronicInvoiceClient;
+  public readonly taxpayer?: TaxpayerClient;
   public readonly environment: EnvironmentName;
   private readonly urls: ServiceUrls;
 
@@ -57,6 +59,14 @@ export class ArcaClient {
         cuit: config.cuit,
         timeoutMs: config.http?.timeoutMs,
         hooks: config.hooks
+      });
+    }
+
+    if (config.serviceScopes.includes('padron')) {
+      this.taxpayer = new TaxpayerClient(this.auth, {
+        url: this.urls.padronUrl,
+        cuit: config.cuit,
+        timeoutMs: config.http?.timeoutMs
       });
     }
   }
