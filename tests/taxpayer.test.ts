@@ -36,7 +36,7 @@ describe('TaxpayerClient', () => {
     });
 
     const client = new TaxpayerClient(mockAuthClient, {
-      url: 'https://example.com/padron',
+      url: 'https://aws.afip.gov.ar/sr-padron/webservices/personaServiceA',
       cuit: '20123456789'
     });
 
@@ -57,7 +57,7 @@ describe('TaxpayerClient', () => {
     });
 
     const client = new TaxpayerClient(mockAuthClient, {
-      url: 'https://example.com/padron',
+      url: 'https://aws.afip.gov.ar/sr-padron/webservices/personaServiceA',
       cuit: '20123456789'
     });
 

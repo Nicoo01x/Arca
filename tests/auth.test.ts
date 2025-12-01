@@ -24,7 +24,10 @@ describe('ArcaAuthClient', () => {
       {
         cuit: '20123456789',
         service: 'wsaa',
-        urls: { authUrl: 'https://example.com/auth', wsfeUrl: 'https://example.com/wsfe' }
+        urls: {
+          authUrl: 'https://wsaa.afip.gov.ar/ws/services/LoginCms',
+          wsfeUrl: 'https://servicios1.afip.gov.ar/wsfev1/service.asmx'
+        }
       },
       undefined
     );
@@ -64,7 +67,10 @@ describe('ArcaAuthClient', () => {
     const authClient = new ArcaAuthClient(dummyCredentials, {
       cuit: '20123456789',
       service: 'wsaa',
-      urls: { authUrl: 'https://example.com/auth', wsfeUrl: 'https://example.com/wsfe' }
+      urls: {
+        authUrl: 'https://wsaa.afip.gov.ar/ws/services/LoginCms',
+        wsfeUrl: 'https://servicios1.afip.gov.ar/wsfev1/service.asmx'
+      }
     });
 
     vi.spyOn(authClient as any, 'signLoginRequest').mockReturnValue('signedCms');

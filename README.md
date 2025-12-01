@@ -80,7 +80,7 @@ console.log(taxpayer?.name, taxpayer?.ivaCondition);
 ```
 
 ## Configuration
-- **environment**: `production | sandbox | testing | custom`. Override URLs via `urls` when using `custom` or to point to internal gateways.
+- **environment**: `production | sandbox | testing | custom`. Defaults hit the official SOAP endpoints (`production` -> `https://wsaa.afip.gov.ar/ws/services/LoginCms`, `https://servicios1.afip.gov.ar/wsfev1/service.asmx`, `https://aws.afip.gov.ar/sr-padron/webservices/personaServiceA`; `sandbox`/`testing` -> homologation hosts `wsaahomo/wswhomo/awshomo`). Override via `urls` or env vars (`ARCA_*_URL`) to point elsewhere.
 - **cert/key**: pass PEM strings (`cert`, `key`) or filesystem paths (`certPath`, `keyPath`). Keep secrets outside source control.
 - **http**: `timeoutMs`, `maxRetries`, `baseDelayMs` for exponential backoff.
 - **hooks**: `onRequest`, `onResponse`, `onError` receive metadata for logging without exposing private keys.

@@ -8,8 +8,8 @@ export interface ServiceUrls {
 
 const DEFAULT_ENVIRONMENTS: Record<Exclude<EnvironmentName, 'custom'>, ServiceUrls> = {
   production: {
-    authUrl: process.env.ARCA_PROD_AUTH_URL || 'https://arca.afip.gob.ar/ws/services/LoginCms',
-    wsfeUrl: process.env.ARCA_PROD_WSFE_URL || 'https://arca.afip.gob.ar/ws/services/fe',
+    authUrl: process.env.ARCA_PROD_AUTH_URL || 'https://wsaa.afip.gov.ar/ws/services/LoginCms',
+    wsfeUrl: process.env.ARCA_PROD_WSFE_URL || 'https://servicios1.afip.gov.ar/wsfev1/service.asmx',
     padronUrl: process.env.ARCA_PROD_PADRON_URL || 'https://aws.afip.gov.ar/sr-padron/webservices/personaServiceA'
   },
   sandbox: {
@@ -18,9 +18,9 @@ const DEFAULT_ENVIRONMENTS: Record<Exclude<EnvironmentName, 'custom'>, ServiceUr
     padronUrl: process.env.ARCA_SANDBOX_PADRON_URL || 'https://awshomo.afip.gov.ar/sr-padron/webservices/personaServiceA'
   },
   testing: {
-    authUrl: process.env.ARCA_TEST_AUTH_URL || 'https://test.afip.gob.ar/ws/services/LoginCms',
-    wsfeUrl: process.env.ARCA_TEST_WSFE_URL || 'https://test.afip.gob.ar/wsfev1/service.asmx',
-    padronUrl: process.env.ARCA_TEST_PADRON_URL || 'https://test.afip.gob.ar/sr-padron/webservices/personaServiceA'
+    authUrl: process.env.ARCA_TEST_AUTH_URL || 'https://wsaahomo.afip.gov.ar/ws/services/LoginCms',
+    wsfeUrl: process.env.ARCA_TEST_WSFE_URL || 'https://wswhomo.afip.gov.ar/wsfev1/service.asmx',
+    padronUrl: process.env.ARCA_TEST_PADRON_URL || 'https://awshomo.afip.gov.ar/sr-padron/webservices/personaServiceA'
   }
 };
 

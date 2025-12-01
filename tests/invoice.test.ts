@@ -77,7 +77,7 @@ describe('ElectronicInvoiceClient', () => {
       });
 
     const client = new ElectronicInvoiceClient(mockAuthClient, {
-      url: 'https://example.com/wsfe',
+      url: 'https://servicios1.afip.gov.ar/wsfev1/service.asmx',
       cuit: '20123456789'
     });
 
@@ -113,7 +113,7 @@ describe('ElectronicInvoiceClient', () => {
       });
 
     const client = new ElectronicInvoiceClient(mockAuthClient, {
-      url: 'https://example.com/wsfe',
+      url: 'https://servicios1.afip.gov.ar/wsfev1/service.asmx',
       cuit: '20123456789'
     });
 
